@@ -1,0 +1,151 @@
+{
+	"folders": {},
+	"connections": {
+		"dbeaver-sample-database-sqlite-1": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "DBeaver Sample Database (SQLite)",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"database": "C:\\Users\\Schen\\AppData\\Roaming\\DBeaverData\\workspace6\\.metadata\\sample-database-sqlite-1\\Chinook.db",
+				"url": "jdbc:sqlite:C:\\Users\\Schen\\AppData\\Roaming\\DBeaverData\\workspace6\\.metadata\\sample-database-sqlite-1\\Chinook.db",
+				"type": "dev"
+			}
+		},
+		"postgres-jdbc-17cab798730-11eb732ea875c9fa": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "postgres",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "5432",
+				"database": "postgres",
+				"url": "jdbc:postgresql://localhost:5432/postgres",
+				"home": "postgresql-x64-10",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false",
+					"@dbeaver-show-template-db@": "false",
+					"@dbeaver-show-unavailable-db@": "false",
+					"show-database-statistics": "false",
+					"@dbeaver-read-all-data-types-db@": "false",
+					"@dbeaver-use-prepared-statements-db@": "false",
+					"postgresql.dd.plain.string": "false",
+					"postgresql.dd.tag.string": "false"
+				},
+				"auth-model": "native"
+			},
+			"filters": [
+				{
+					"id": "postgres",
+					"type": "org.jkiss.dbeaver.ext.postgresql.model.PostgreSchema",
+					"enabled": true,
+					"include": [
+						"examples"
+					]
+				}
+			]
+		}
+	},
+	"virtual-models": {
+		"postgres-jdbc-17cab798730-11eb732ea875c9fa": {
+			"postgres": {
+				"examples": {
+					"@properties": {
+						"erd.diagram.state": {
+							"serialized": "<diagram version=\"1\" name=\"examples\" time=\"202110232217\"><entities><data-source id=\"postgres-jdbc-17cab798730-11eb732ea875c9fa\"><entity id=\"1\" name=\"accounts\" fq-name=\"examples.accounts\" order=\"0\" x=\"40\" y=\"40\"><path name=\"examples\"/><path name=\"postgres\"/></entity><entity id=\"2\" name=\"login\" fq-name=\"examples.login\" order=\"1\" x=\"160\" y=\"40\"><path name=\"examples\"/><path name=\"postgres\"/></entity><entity id=\"3\" name=\"users\" fq-name=\"examples.users\" order=\"2\" x=\"280\" y=\"40\"><path name=\"examples\"/><path name=\"postgres\"/></entity></data-source></entities><relations/></diagram>"
+						}
+					},
+					":accounts": {
+						"properties": {
+							"erd.diagram.state": {
+								"serialized": "<diagram version=\"1\" name=\"accounts\" time=\"202110232216\"><entities><data-source id=\"postgres-jdbc-17cab798730-11eb732ea875c9fa\"><entity id=\"1\" name=\"accounts\" fq-name=\"examples.accounts\" order=\"0\" color-bg=\"255,128,64\" x=\"40\" y=\"40\"><path name=\"examples\"/><path name=\"postgres\"/></entity></data-source></entities><relations/></diagram>"
+							}
+						},
+						"constraints": {
+							"accounts_VK": {
+								"type": "vpk",
+								"attributes": [
+									"fullname"
+								]
+							}
+						},
+						"foreign-keys": [
+							{
+								"entity": "database://postgres-jdbc-17cab798730-11eb732ea875c9fa/postgres/org.jkiss.dbeaver.ext.postgresql.model.PostgreSchema/examples/org.jkiss.dbeaver.ext.postgresql.model.PostgreTable/users",
+								"constraint": "users_VK",
+								"attributes": {
+									"fullname": "fullname"
+								}
+							}
+						]
+					},
+					":login": {
+						"properties": {
+							"erd.diagram.state": {
+								"serialized": "<diagram version=\"1\" name=\"login\" time=\"202110232217\"><entities><data-source id=\"postgres-jdbc-17cab798730-11eb732ea875c9fa\"><entity id=\"1\" name=\"login\" fq-name=\"examples.login\" order=\"0\" color-bg=\"255,128,64\" x=\"40\" y=\"40\"><path name=\"examples\"/><path name=\"postgres\"/></entity></data-source></entities><relations/></diagram>"
+							}
+						},
+						"constraints": {
+							"login_VK": {
+								"type": "vpk",
+								"attributes": [
+									"userid",
+									"useremail"
+								]
+							}
+						},
+						"foreign-keys": [
+							{
+								"entity": "database://postgres-jdbc-17cab798730-11eb732ea875c9fa/postgres/org.jkiss.dbeaver.ext.postgresql.model.PostgreSchema/examples/org.jkiss.dbeaver.ext.postgresql.model.PostgreTable/users",
+								"constraint": "users_VK",
+								"attributes": {
+									"useremail": "email",
+									"userid": "userid"
+								}
+							},
+							{
+								"entity": "database://postgres-jdbc-17cab798730-11eb732ea875c9fa/postgres/org.jkiss.dbeaver.ext.postgresql.model.PostgreSchema/examples/org.jkiss.dbeaver.ext.postgresql.model.PostgreTable/users",
+								"constraint": "users_VK",
+								"attributes": {
+									"userid": "userid",
+									"useremail": "email"
+								}
+							}
+						]
+					},
+					":users": {
+						"properties": {
+							"erd.diagram.state": {
+								"serialized": "<diagram version=\"1\" name=\"users\" time=\"202110232217\"><entities><data-source id=\"postgres-jdbc-17cab798730-11eb732ea875c9fa\"><entity id=\"1\" name=\"users\" fq-name=\"examples.users\" order=\"0\" color-bg=\"255,128,64\" x=\"40\" y=\"40\"><path name=\"examples\"/><path name=\"postgres\"/></entity></data-source></entities><relations/></diagram>"
+							}
+						},
+						"constraints": {
+							"users_VK": {
+								"type": "vpk",
+								"attributes": [
+									"email"
+								]
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}
