@@ -1,0 +1,12 @@
+2021-11-14 15:56:37  TRACE com.nasch.Logging.Log:14 TRACE LOG!
+2021-11-14 15:56:37  DEBUG com.nasch.Logging.Log:15 DEBUG LOG!
+2021-11-14 15:56:37  INFO com.nasch.Logging.Log:16 INFO LOG!
+2021-11-14 15:56:37  WARN com.nasch.Logging.Log:17 WARN LOG!
+2021-11-14 15:56:37  ERROR com.nasch.Logging.Log:18 ERROR LOG!
+2021-11-14 15:56:37  FATAL com.nasch.Logging.Log:19 FATAL LOG!
+2021-11-14 16:23:59  TRACE com.nasch.Logging.Log:18 TRACE LOG!
+2021-11-14 16:23:59  DEBUG com.nasch.Logging.Log:19 DEBUG LOG!
+2021-11-14 16:23:59  INFO com.nasch.Logging.Log:20 INFO LOG!
+2021-11-14 16:23:59  WARN com.nasch.Logging.Log:21 WARN LOG!
+2021-11-14 16:23:59  ERROR com.nasch.Logging.Log:22 ERROR LOG!
+2021-11-14 16:23:59  FATAL com.nasch.Logging.Log:23 FATAL LOG!
