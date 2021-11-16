@@ -29,7 +29,7 @@ public class Database {
 	public Connection getConnection() throws SQLException {
 		final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
 		final String USER = "postgres";
-		final String PASS = "guest123";		// temporary password for privacy
+		final String PASS = "*Imlucky08";		// temporary password for privacy
 		
 		return DriverManager.getConnection(DB_URL, USER, PASS);
 		
