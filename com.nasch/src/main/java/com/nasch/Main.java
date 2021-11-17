@@ -52,13 +52,19 @@ public class Main {
 				}
 				else if (menuInput == 2) {
 					if (menu.accountLogin(DB)) {
-						accounts = DB.getAccounts();
 						login = DB.getLogin();
 						user = DB.getUser();
+						for (int i = 0; i < DB.getAccountList().size(); i++) {
+							if (DB.getAccountList().get(i).getFullname().equals(user.getFullname())) {
+								DB.addAccount(DB.getAccountList().get(i));
+							}
+							
+						}
+						accounts = DB.getAccounts();
 
 						System.out.println("Welcome " );
+						userInput = 0;
 						while (userInput != 4) {
-							
 							System.out.println(" --- What would you like to do? --- ");
 							System.out.println(" --- Press 1: View account and balance");
 							System.out.println(" --- Press 2: View and edit profile");

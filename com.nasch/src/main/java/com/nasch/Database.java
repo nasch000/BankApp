@@ -17,24 +17,26 @@ import com.nasch.User.UserDAOImpl;
 	 **/
 
 public class Database {
-	
+	// contains all data from the database separated into a list
 	private List<Account> accountList = new ArrayList<Account>();
 	private List<Login> loginList = new ArrayList<Login>();
 	private List<User> userList = new ArrayList<User>();
 	
+	// when user logs in, grabs data of current user
 	private List<Account> currentAccountList = new ArrayList<Account>();
 	private Login currentLogin = new Login();
 	private User currentUser = new User();
 	
+	// first method of connection
 	public Connection getConnection() throws SQLException {
 		final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
 		final String USER = "postgres";
-		final String PASS = "*Imlucky08";		// temporary password for privacy
+		final String PASS = "guest123";		// temporary password for privacy
 		
 		return DriverManager.getConnection(DB_URL, USER, PASS);
 		
 	}
-	
+	// test method
 	public void connectTest() {
 		try {
 			Connection connect = getConnection();
@@ -47,7 +49,7 @@ public class Database {
 		}
 		
 	}
-	
+	// gets the data
 	public List<Account> getAccountList() {
 		return accountList;
 	}
@@ -59,7 +61,7 @@ public class Database {
 	public List<User> getUserList() {
 		return userList;
 	}
-	
+	// sets the data from the database
 	public void setDatabase() {
 		AccountDAOImpl accountDAO = new AccountDAOImpl();
 		LoginDAOImpl loginDAO = new LoginDAOImpl();
@@ -76,7 +78,7 @@ public class Database {
 		}
 		
 	}
-	
+	// sets and gets data for the current account
 	public List<Account> getAccounts() {
 		return currentAccountList;
 	}

@@ -223,8 +223,8 @@ public class Menu {
 				}
 				System.out.println(" --- Enter Account Number: ");
 				accountNum = read.nextInt();
-				System.out.println("Account type: " + accounts.get(accountNum).getType());
-				System.out.println("Balance: " + accounts.get(accountNum).getValue());
+				System.out.println("Account type: " + accounts.get(accountNum - 1).getType());
+				System.out.println("Balance: " + accounts.get(accountNum - 1).getValue());
 				
 			}
 			else if (userInput == 2) {
@@ -249,20 +249,22 @@ public class Menu {
 				else {
 					System.out.println(" --- How much would you like to transfer? ");
 					double transferBal = read.nextDouble();
-					if (transferBal < 0) transferBal *= -1;
-					if (accounts.get(transferNum).getValue() < transferBal) {
+					if (transferBal < 0) {
+						transferBal *= -1;
+					}
+					if (accounts.get(transferNum - 1).getValue() < transferBal) {
 						System.out.println(" --- Failed trying to transfer an amount over the account's balance");
 						
 					}
 					else {
-						double newBalance = accounts.get(transferNum).getValue() - transferBal;
-						accounts.get(transferNum).setOldValue(accounts.get(transferNum).getValue());
-						accounts.get(transferNum).setValue(newBalance);
-						double newBalance2 = accounts.get(accountNum).getValue() + transferBal;
-						accounts.get(accountNum).setOldValue(accounts.get(accountNum).getValue());
-						accounts.get(accountNum).setValue(newBalance2);
-						accountDAO.updateAccount(accounts.get(transferNum));
-						accountDAO.updateAccount(accounts.get(accountNum));
+						double newBalance = accounts.get(transferNum - 1).getValue() - transferBal;
+						accounts.get(transferNum - 1).setOldValue(accounts.get(transferNum - 1).getValue());
+						accounts.get(transferNum - 1).setValue(newBalance);
+						double newBalance2 = accounts.get(accountNum - 1).getValue() + transferBal;
+						accounts.get(accountNum - 1).setOldValue(accounts.get(accountNum - 1).getValue());
+						accounts.get(accountNum - 1).setValue(newBalance2);
+						accountDAO.updateAccount(accounts.get(transferNum - 1));
+						accountDAO.updateAccount(accounts.get(accountNum - 1));
 						
 					}
 					
@@ -279,14 +281,14 @@ public class Menu {
 				System.out.println(" --- How much would you like to transfer? ");
 				double transferBal = read.nextDouble();
 				if (transferBal < 0) transferBal *= -1;
-				if (accounts.get(accountNum).getValue() < transferBal) {
+				if (accounts.get(accountNum - 1).getValue() < transferBal) {
 					System.out.println(" --- Failed trying to transfer an amount over the account's balance");
 				}
 				else {
-					double newBalance = accounts.get(accountNum).getValue() + transferBal;
-					accounts.get(accountNum).setOldValue(accounts.get(accountNum).getValue());
-					accounts.get(accountNum).setValue(newBalance);
-					accountDAO.updateAccount(accounts.get(accountNum));
+					double newBalance = accounts.get(accountNum - 1).getValue() + transferBal;
+					accounts.get(accountNum - 1).setOldValue(accounts.get(accountNum - 1).getValue());
+					accounts.get(accountNum - 1).setValue(newBalance);
+					accountDAO.updateAccount(accounts.get(accountNum - 1));
 					
 				}
 				
@@ -305,7 +307,9 @@ public class Menu {
 				else if (actionNum == 1) {
 					System.out.println(" --- Deposit how much into new account?");
 					double newBalance = read.nextDouble();
-					if (newBalance < 0) newBalance *= -1;
+					if (newBalance < 0) {
+						newBalance *= -1;
+					}
 					Account newAccount = new Account();
 					newAccount.setFullname(accounts.get(0).getFullname());
 					newAccount.setType("Savings");
@@ -317,7 +321,9 @@ public class Menu {
 				else if (actionNum == 2) {
 					System.out.println(" --- Deposit how much into new account?");
 					double newBalance = read.nextDouble();
-					if (newBalance < 0) newBalance *= -1;
+					if (newBalance < 0) {
+						newBalance *= -1;
+					}
 					Account newAccount = new Account();
 					newAccount.setFullname(accounts.get(0).getFullname());
 					newAccount.setType("Checking");
